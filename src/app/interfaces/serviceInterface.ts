@@ -10,6 +10,7 @@ export interface IServicio {
   publishedAt: string
   imagen: ImagenServicio[]
   categoria: CategoriaServicio
+  tiempoEstimado?: number
 }
 
 export interface BloqueDescripcion {
