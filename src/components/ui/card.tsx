@@ -2,6 +2,7 @@ import * as React from "react"
 
 import { cn } from "@/components/lib/utils"
 
+// Este componente Card es el contenedor principal del card, que tiene un fondo, un borde y una sombra
 function Card({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
@@ -15,6 +16,7 @@ function Card({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
+// Este componente CardHeader es el encabezado del card, que contiene el título y la descripción
 function CardHeader({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
@@ -28,6 +30,7 @@ function CardHeader({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
+// Este componente CardTitle es el título del card, que se muestra en negrita y sin margen
 function CardTitle({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
@@ -38,6 +41,7 @@ function CardTitle({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
+// Este componente CardDescription es la descripción del card, que se muestra en un tamaño de fuente más pequeño y con un color de texto atenuado
 function CardDescription({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
@@ -48,6 +52,7 @@ function CardDescription({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
+// Este componente CardAction es una acción del card, que se alinea a la derecha y ocupa dos filas
 function CardAction({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
@@ -61,6 +66,7 @@ function CardAction({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
+// Este componente CardContent es el contenido del card, que tiene un relleno horizontal
 function CardContent({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
@@ -71,6 +77,7 @@ function CardContent({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
+// Este componente CardFooter es el pie del card, que contiene acciones adicionales y tiene un relleno horizontal
 function CardFooter({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
@@ -80,7 +87,7 @@ function CardFooter({ className, ...props }: React.ComponentProps<"div">) {
     />
   )
 }
-
+// exports necesarios para que los componentes sean accesibles desds otros archivos
 export {
   Card,
   CardHeader,

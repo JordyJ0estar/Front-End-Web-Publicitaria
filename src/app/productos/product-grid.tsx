@@ -4,21 +4,23 @@ import Image from "next/image"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Skeleton } from "@/components/ui/skeleton"
-import type { IProducto } from "./productoInterface"
+import type { IProducto } from "../interfaces/productoInterface"
 import { useBoundStore } from "store/boundedStore" 
 
-
+// Importa el store que has creado para manejar el estado global
 export default function ProductGrid({ productos = [] }: { productos?: IProducto[] }) {
   console.log(productos)
   const addProducto = useBoundStore ((state)=>state.addProducto)
   const productoInfo = useBoundStore ((state)=>state.producto)
+  // Función para extraer texto de los bloques de descripción
+  // Esta función toma un array de bloques y devuelve un string con el texto concatenado
   const extractTextFromBlocks = (blocks: any[]) => {
     if (!blocks || !blocks.length) return ""
     return blocks
       .map((block) => block.children?.map((child: any) => child.text || "").join("") || "")
       .join(" ")
   }
-
+// Si no hay productos, muestra un esqueleto de carga
   if (!productos) {
     return (
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -33,16 +35,20 @@ const handleClickCard = (producto:IProducto) => {
   console.log('prueba',producto)
   addProducto(producto)
   console.log(productoInfo)
+  window.location.href = `/productos/${producto.id}`
 }
 
   return (
+    // Muestra los productos en una cuadrícula
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
       {productos.map((producto) => {
-        const img = producto.imagen[0].formats.large?.url
+        const img = producto.imagen[0].formats.small?.url
         const categoria = producto.categoria.name
 
         return (
-          <Card key={producto.id} className="overflow-hidden flex flex-col h-full" onClick={() => handleClickCard(producto)}>
+          // Cada producto se muestra como una tarjeta
+          // Al hacer clic en la tarjeta, se llama a handleClickCard con el producto
+          <Card key={producto.id} className="overflow-hidden flex flex-col h-150" onClick={() => handleClickCard(producto)}>
             <div className="aspect-square relative overflow-hidden">
               {img ? (
                 <Image
@@ -89,10 +95,10 @@ const handleClickCard = (producto:IProducto) => {
                   ${producto.precio_unitario.toLocaleString()}
                 </span>
                 <button
-                  className="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-md text-sm disabled:opacity-50"
+                  className="bg-primary hover:bg-primary/90   text-white px-4 py-2 rounded-md text-sm disabled:opacity-50"
                   disabled={!producto.disponible}
                 >
-                  Agregar
+                  Consultar
                 </button>
               </div>
             </CardFooter>
@@ -103,6 +109,7 @@ const handleClickCard = (producto:IProducto) => {
   )
 }
 
+// Componente ProductSkeleton que muestra un esqueleto de carga para los productos
 function ProductSkeleton() {
   return (
     <div className="border rounded-lg overflow-hidden flex flex-col h-full">

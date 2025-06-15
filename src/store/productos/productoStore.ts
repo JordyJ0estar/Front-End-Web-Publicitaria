@@ -1,5 +1,5 @@
 import type { StateCreator } from "zustand";
-import type { IProducto } from "@/app/productos/productoInterface";
+import type { IProducto } from "@/app/interfaces/productoInterface";
 
 export interface ProductosSlice {
     producto : IProducto | undefined;

@@ -2,35 +2,21 @@
 
 import { useEffect, useState } from "react"
 import ProductGrid from "./productos/product-grid"
-import type { IProducto } from "./productos/productoInterface"
+import type { IProducto } from "./interfaces/productoInterface"
+import "./globals.css"
+import NavBar from "./navBar/nav-bar"
 
 const Home = () => {
-  const [productos, setProductos] = useState<IProducto[]>([])
+ 
   
-  const getProductos = async () => {
-    try {
-      const res = await fetch('http://localhost:4000/api/productos?populate=*', {
-        cache: "no-store",
-        headers: {
-          "Accept": "application/json",
-        }
-      })
-      const response = await res.json()
-      setProductos(response.data || [])
-      console.log(response.data)
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
-  useEffect(() => {
-    getProductos()
-  }, []) 
-
+  // Retorna el componente principal que muestra los productos
+  // Este componente utiliza el componente ProductGrid para mostrar los productos en una cuadrícula
   return (
-    <main className="p-8">
-      <h1 className="text-2xl font-bold mb-6">Productos</h1>
-      <ProductGrid productos={productos} />
+    <main className="">
+      <div className="p-4">
+        <h1 className="text-2xl font-bold mb-4">Bienvenido a la Comercializadora Rodolfo</h1>
+        <p className="text-lg">Explora nuestros productos y servicios.</p>
+      </div>
     </main>
   )
 }
