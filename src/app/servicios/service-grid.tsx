@@ -43,7 +43,7 @@ export default function ServiceGrid({ servicios = [] }: { servicios?: IServicio[
                   className="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-md text-sm disabled:opacity-50"
                   disabled={!servicio.disponible}
                 >
-                  Reservar
+                  Consultar
                 </button>
               }
             />
