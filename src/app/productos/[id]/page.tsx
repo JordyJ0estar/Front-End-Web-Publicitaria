@@ -62,7 +62,7 @@ export default async function ProductoInfoPage({ params }: ProductPageProps) {
 
   // Si el producto se encontró, muestra sus detalles
   return (
-    <main className="container mt-7 mx-auto p-4 bg-gray-700 text-white-500 shadow-lg rounded-lg">
+    <main className="container mt-12 mx-auto p-4 bg-gray-700 text-white-500 shadow-lg rounded-lg">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Columna de la imagen */}
         <div className="md:col-span-1 flex justify-center items-center">
