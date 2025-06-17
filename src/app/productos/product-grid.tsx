@@ -1,7 +1,5 @@
 "use client"
 
-import Image from "next/image"
-import { Badge } from "@/components/ui/badge"
 import { Skeleton } from "@/components/ui/skeleton"
 import type { IProducto } from "../interfaces/productoInterface"
 import { useBoundStore } from "store/boundedStore"
@@ -29,7 +27,7 @@ export default function ProductGrid({ productos = [] }: { productos?: IProducto[
     console.log('prueba',producto)
     addProducto(producto)
     console.log(productoInfo)
-    window.location.href = `/productos/${producto.id}`
+    window.location.href = `/productos/${producto.documentId}`
   }
 
   return (

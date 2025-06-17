@@ -71,3 +71,5 @@ export interface CategoriaServicio {
   updatedAt: string
   publishedAt: string
 }
+
+
