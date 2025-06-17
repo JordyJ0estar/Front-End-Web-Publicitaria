@@ -55,7 +55,7 @@ export default function ServiceGrid({ servicios = [] }: { servicios?: IServicio[
                   disabled={!servicio.disponible}
                   onClick={() => handleClickCard(servicio)}
                 >
-                  Reservar
+                  Consultar
                 </button>
               }
             />

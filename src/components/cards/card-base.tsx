@@ -105,7 +105,7 @@ export const CardBase = ({
         <div className="w-full flex justify-between items-center">
           {price !== undefined && (
             <div className="flex flex-col">
-              <span className="text-sm text-muted-foreground">Precio</span>
+              <span className="text-sm text-muted-foreground">Precio unitario</span>
               <span className="font-bold text-xl">${price.toLocaleString()}</span>
             </div>
           )}
