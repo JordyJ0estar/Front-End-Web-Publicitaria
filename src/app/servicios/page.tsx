@@ -18,6 +18,8 @@ export default function ServiciosPage() {
     <main className="p-4">
       <h1 className="text-2xl font-bold mb-4">Nuestros Servicios</h1>
       <ServiceGrid servicios={servicio}/>
+      
     </main>
+    
   )
 }
