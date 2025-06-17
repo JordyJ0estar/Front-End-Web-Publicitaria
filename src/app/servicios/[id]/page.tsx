@@ -3,11 +3,10 @@ import { BloqueDescripcion } from '@/app/interfaces/serviceInterface';
 
 interface ServicioPageProps {
   params: {
-    id: string; // El ID del servicio de la URL
+    id: string; 
   };
 }
 
-// Helper para renderizar la descripción Rich Text
 function renderRichText(content: BloqueDescripcion[] | undefined) {
   if (!content) return null;
 
@@ -23,7 +22,6 @@ function renderRichText(content: BloqueDescripcion[] | undefined) {
             ))}
           </p>
         );
-      // Puedes añadir más tipos de bloques aquí (headings, lists, etc.) si tu Strapi los usa
       default:
         return (
           <p key={index} className="mb-2">
@@ -41,32 +39,30 @@ export default async function ServiceInfoPage({ params }: ServicioPageProps) {
   // Desestructura el ID de los parámetros, asegurándote de usar 'await'
   const { id } = await params;
 
-  // Llama a la función para obtener el producto por su ID
+  // Llama a la función para obtener el servicio por su ID
   const servicio = await getServicioById(id);
 
-  // Si el producto no se encuentra, muestra un mensaje de error o redirige
+  // Si el servicio no se encuentra, muestra un mensaje de error o redirige
   if (!servicio) {
     return (
       <main className="container mx-auto p-4 text-center">
         <h1 className="text-3xl font-bold text-red-600 mb-4">Error: Servicio no encontrado</h1>
         <p className="text-lg">Lo sentimos, no pudimos encontrar un servicio con el ID: <span className="font-semibold">{id}</span>.</p>
         <p className="mt-4">Por favor, verifica la URL o vuelve a la lista de servicios.</p>
-        {/* Opcional: un botón para volver */}
         <a href="/servicios" className="mt-6 inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-          Volver a Productos
+          Volver a Servicios
         </a>
       </main>
     );
   }
 
-  // Si el producto se encontró, muestra sus detalles
+  // Si el servicio se encontró, muestra sus detalles
   return (
     <main className="container mt-12 mx-auto p-4 bg-gray-700 text-white-500 shadow-lg rounded-lg">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Columna de la imagen */}
         <div className="md:col-span-1 flex justify-center items-center">
           {servicio.imagen && servicio.imagen.length > 0 && (
-            // Asegúrate de que la URL base de Strapi sea correcta aquí también
             <img
               src={`${"http://localhost:4000"}${servicio.imagen[0].url}`}
               alt={servicio.nombre}
@@ -81,7 +77,7 @@ export default async function ServiceInfoPage({ params }: ServicioPageProps) {
           )}
         </div>
 
-        {/* Columna de detalles del producto */}
+        {/* Columna de detalles del servicio */}
         <div className="md:col-span-1">
           <h1 className="text-4xl font-extrabold  mb-4">{servicio.nombre}</h1>
           <p className="text-2xl font-semibold  mb-6">${servicio.precio.toLocaleString('es-CL')}</p>
@@ -119,15 +115,3 @@ export default async function ServiceInfoPage({ params }: ServicioPageProps) {
     </main>
   );
 }
-
-// Opcional: Generar rutas estáticas en tiempo de construcción (SSG)
-// Si habilitas esto, Next.js pre-renderizará estas páginas en el build
-// para un mejor rendimiento y SEO. Necesitarías getProductos para obtener todos los IDs.
-/*
-export async function generateStaticParams() {
-  const productos = await getProductos(); // Necesitas una función para obtener TODOS los productos
-  return productos.map((producto) => ({
-    id: producto.id.toString(), // Asegúrate de que el ID sea string para la URL
-  }));
-}
-*/

@@ -18,6 +18,16 @@ export default function SobreNostrosPage() {
         Valoramos la transparencia, la responsabilidad y el compromiso como pilares fundamentales
         de nuestra empresa. Gracias por confiar en nosotros.
       </p>
+      <p className="text-lg text-justify leading-relaxed mb-4">
+        Contactanos para más información sobre nuestros productos y servicios,
+        a través de nuestros contactos.
+      </p>
+      <p className="text-2xl text-center font-bold leading-relaxed mt-10 mb-4">
+        Correo: rjguzmanromero@gmail.com
+      </p>
+      <p className="text-2xl text-center font-bold  leading-relaxed mt-10 mb-4">
+        WhatsApps +569423376613
+      </p>
       </main>
     </div>
     

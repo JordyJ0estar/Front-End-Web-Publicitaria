@@ -1,14 +1,12 @@
-// app/productos/[id]/page.tsx
-import { getProductoById } from '@/lib/productos-api'; // Asegúrate que el path sea correcto
-import { RichTextContent } from '@/app/interfaces/productoInterface'; // Importa la interfaz para la descripción
+import { getProductoById } from '@/lib/productos-api'; 
+import { RichTextContent } from '@/app/interfaces/productoInterface'; 
 
 interface ProductPageProps {
   params: {
-    id: string; // El ID del producto de la URL
+    id: string; 
   };
 }
 
-// Helper para renderizar la descripción Rich Text
 function renderRichText(content: RichTextContent[] | undefined) {
   if (!content) return null;
 
@@ -24,7 +22,6 @@ function renderRichText(content: RichTextContent[] | undefined) {
             ))}
           </p>
         );
-      // Puedes añadir más tipos de bloques aquí (headings, lists, etc.) si tu Strapi los usa
       default:
         return (
           <p key={index} className="mb-2">
@@ -52,7 +49,6 @@ export default async function ProductoInfoPage({ params }: ProductPageProps) {
         <h1 className="text-3xl font-bold text-red-600 mb-4">Error: Producto no encontrado</h1>
         <p className="text-lg">Lo sentimos, no pudimos encontrar un producto con el ID: <span className="font-semibold">{id}</span>.</p>
         <p className="mt-4">Por favor, verifica la URL o vuelve a la lista de productos.</p>
-        {/* Opcional: un botón para volver */}
         <a href="/productos" className="mt-6 inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
           Volver a Productos
         </a>
@@ -62,12 +58,11 @@ export default async function ProductoInfoPage({ params }: ProductPageProps) {
 
   // Si el producto se encontró, muestra sus detalles
   return (
-    <main className="container mt-12 mx-auto p-4 bg-gray-700 text-white-500 shadow-lg rounded-lg">
+    <main className="container w-auto mt-12 mx-auto p-4 bg-gray-700 text-white-500 shadow-lg rounded-lg">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Columna de la imagen */}
         <div className="md:col-span-1 flex justify-center items-center">
           {producto.imagen && producto.imagen.length > 0 && (
-            // Asegúrate de que la URL base de Strapi sea correcta aquí también
             <img
               src={`${"http://localhost:4000"}${producto.imagen[0].url}`}
               alt={producto.nombre}
@@ -115,15 +110,3 @@ export default async function ProductoInfoPage({ params }: ProductPageProps) {
     </main>
   );
 }
-
-// Opcional: Generar rutas estáticas en tiempo de construcción (SSG)
-// Si habilitas esto, Next.js pre-renderizará estas páginas en el build
-// para un mejor rendimiento y SEO. Necesitarías getProductos para obtener todos los IDs.
-/*
-export async function generateStaticParams() {
-  const productos = await getProductos(); // Necesitas una función para obtener TODOS los productos
-  return productos.map((producto) => ({
-    id: producto.id.toString(), // Asegúrate de que el ID sea string para la URL
-  }));
-}
-*/

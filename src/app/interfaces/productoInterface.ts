@@ -1,11 +1,9 @@
-// app/interfaces/productoInterface.ts
-
 export interface IProducto {
   id: number;
   documentId: string;
   nombre: string;
   disponible: boolean;
-  descripcion: RichTextContent[]; // Usaremos un tipo más genérico para la descripción
+  descripcion: RichTextContent[];
   precio_unitario: number;
   createdAt: string;
   updatedAt: string;
@@ -65,7 +63,6 @@ export interface ICategoria {
   publishedAt: string;
 }
 
-// Tipo para el contenido Rich Text de Strapi (ejemplo simplificado)
 export interface RichTextContent {
   type: string;
   children: { text: string; type: string }[];

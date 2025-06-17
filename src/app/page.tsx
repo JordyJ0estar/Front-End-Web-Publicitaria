@@ -35,9 +35,6 @@ const Home = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      {/* NavBar (si ya está en layout.tsx, puedes comentarla o quitarla de aquí) */}
-      {/* <NavBar /> */}
-
       <main className="container mx-auto px-4 py-8 flex-grow">
         {/* Sección de Bienvenida */}
         <section className="text-center mb-12 p-8 rounded-lg shadow-md">
@@ -112,7 +109,6 @@ const Home = () => {
           </div>
         </section>
 
-        {/* Sección de "Sobre Nosotros" o "Servicios" (ejemplo) */}
         <section className=" p-8 rounded-lg shadow-md text-center">
           <h2 className="text-3xl text-blue-600 font-bold mb-4">Comprometidos con la Calidad</h2>
           <p className=" leading-relaxed mb-4">
@@ -120,9 +116,6 @@ const Home = () => {
             Nos dedicamos a ofrecer productos de la más alta calidad con un servicio al cliente excepcional.
           </p>
         </section>
-
-        {/* Puedes añadir más secciones aquí, como un listado de categorías, productos destacados, etc. */}
-
       </main>
 
       {/* Pie de página (ejemplo simple) */}
